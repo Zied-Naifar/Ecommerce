@@ -10,6 +10,7 @@ const { execSync } = require('child_process');
 const componentGenerator = require('./component/index.js');
 const containerGenerator = require('./container/index.js');
 const languageGenerator = require('./language/index.js');
+const featureGenerator = require('./feature/index.js');
 
 /**
  * Every generated backup file gets this extension
@@ -19,15 +20,16 @@ const BACKUPFILE_EXTENSION = 'rbgen';
 
 module.exports = plop => {
   plop.setGenerator('component', componentGenerator);
-  plop.setGenerator('container', containerGenerator);
+  plop.setGenerator('page', containerGenerator);
+  plop.setGenerator('feature', featureGenerator);
   plop.setGenerator('language', languageGenerator);
   plop.addHelper('directory', comp => {
     try {
       fs.accessSync(
-        path.join(__dirname, `../../app/containers/${comp}`),
+        path.join(__dirname, `../../app/pages/${comp}`),
         fs.F_OK,
       );
-      return `containers/${comp}`;
+      return `pages/${comp}`;
     } catch (e) {
       return `components/${comp}`;
     }
@@ -40,7 +42,7 @@ module.exports = plop => {
       config.path,
       plop.getHelper('properCase')(answers.name),
       '**',
-      '**.js',
+      '*.{js,jsx}',
     )}`;
 
     try {

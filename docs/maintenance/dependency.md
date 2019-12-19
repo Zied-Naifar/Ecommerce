@@ -73,7 +73,7 @@ Identify problems that occur and try to resolve them by rolling back the respect
 - Add a new route in the App container:
 
 ```js
-import TestPage from 'containers/TestPage/Loadable';
+import TestPage from 'pages/TestPage/Loadable';
 
 <Route path="/test" component={TestPage} />
 ```
@@ -256,13 +256,13 @@ Addressed here https://github.com/imagemin/imagemin-pngquant/issues/32 **_Needs 
   WARNING in ./app/components/Header/banner.jpg
   DEPRECATED. Configure gifsicle's interlaced option in it's own options. (gifsicle.interlaced)
   @ ./app/components/Header/index.js 47:0-34
-  @ ./app/containers/App/index.js
+  @ ./app/pages/App/index.js
   @ ./app/app.js
   @ multi eventsource-polyfill webpack-hot-middleware/client?reload=true ./app/app.js
   WARNING in ./app/components/Header/banner.jpg
   DEPRECATED. Configure optipng's optimizationLevel option in it's own options. (optipng.optimizationLevel)
   @ ./app/components/Header/index.js 47:0-34
-  @ ./app/containers/App/index.js
+  @ ./app/pages/App/index.js
   @ ./app/app.js
   @ multi eventsource-polyfill webpack-hot-middleware/client?reload=true ./app/app.js
 

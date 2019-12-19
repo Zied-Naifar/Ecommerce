@@ -3,11 +3,10 @@
  * {{ properCase name }} actions
  *
  */
-
-import { DEFAULT_ACTION } from './constants';
+import * as CONSTANTS from './constants';
 
 export function defaultAction() {
-  return {
-    type: DEFAULT_ACTION,
-  };
+    return {
+        type: CONSTANTS.DEFAULT_ACTION,
+    };
 }

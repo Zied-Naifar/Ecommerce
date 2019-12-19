@@ -52,7 +52,7 @@ We hope you enjoy this release and welcome any feedback, bug reports or feature 
 - Migrate default Node version to `lts/dubnium` (**@julienben**)
 - Fix support for `stylelint` (**@jwinn**)
 - Fix setup script for Windows environments (**@mensae**)
-- Generate passing tests for components/containers (**@mjhost**)
+- Generate passing tests for components/pages (**@mjhost**)
 - Rewrite generators code (**@mensae**)
 - Complete rewrite or `generate-templates-for-linting.js` (**@mensae**)
 - `webpack.DefinePlugin` => `webpack.EnvironmentPlugin` (**@nshimiye**)
@@ -283,7 +283,7 @@ website!
 ## Highlights
 
 - **Scaffolding**: Thanks to @somus, you can now run `npm run generate` in your
-  terminal and immediately create new components, containers, sagas, routes and
+  terminal and immediately create new components, pages, sagas, routes and
   selectors! No more context switching, no more "Create new file, copy and paste
   that boilerplate structure, bla bla": just `npm run generate <thing>` and go.
 
@@ -293,7 +293,7 @@ website!
   everybody for sharing your thoughts), we now have a weapons-grade, domain-driven
   application architecture.
 
-  "Smart" containers are now isolated from stateless and/or generic components,
+  "Smart" pages are now isolated from stateless and/or generic components,
   tests are now co-located with the code that they validate.
 
 - **New industry-standard JS utilities** We're now making the most of...
