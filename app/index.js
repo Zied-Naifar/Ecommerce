@@ -21,6 +21,7 @@ import App from 'pages/App';
 
 // Import Language Provider
 import LanguageProvider from 'pages/LanguageProvider';
+import registerErrorInterceptors from './shared/utils/error-interceptors';
 
 // Load the favicon and the .htaccess file
 /* eslint-disable import/no-unresolved, import/extensions */
@@ -36,6 +37,9 @@ import { translationMessages } from './i18n';
 // Create redux store with history
 const initialState = {};
 const store = configureStore(initialState, history);
+
+registerErrorInterceptors();
+
 const MOUNT_NODE = document.getElementById('app');
 
 const render = messages => {

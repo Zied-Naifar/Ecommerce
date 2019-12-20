@@ -1,12 +1,12 @@
 import {
-  NOTIFICATION_TYPES,
+  // NOTIFICATION_TYPES,
   REQUEST,
   SUCCESS,
   FAILURE,
   GET,
   URL_SEPARATOR,
 } from 'shared/constants';
-import { pushNotification } from 'shared/utils/asideMessage';
+// import { pushNotification } from 'shared/utils/asideMessage';
 import { errorsExtraction } from 'shared/utils/error-interceptors';
 import { push } from 'connected-react-router';
 import routes from 'shared/routes';
@@ -93,9 +93,10 @@ const error403Handling = (store, next, action) => {
         next(action);
       } else {
         const arrayErrors = [action.e.response.data.message];
-        arrayErrors.forEach(error =>
-          pushNotification(NOTIFICATION_TYPES.error, error),
-        );
+        console.log('arrayErrors: ', arrayErrors);
+        // arrayErrors.forEach(error =>
+        //   pushNotification(NOTIFICATION_TYPES.error, error),
+        // );
         next({ ...action, arrayErrors });
         return;
       }

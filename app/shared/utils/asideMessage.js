@@ -1,16 +1,16 @@
-import { notification } from 'antd'
+// import { notification } from 'antd'
 
-export const pushNotification = (
-  type,
-  title,
-  description,
-  callBack = () => null,
-) => {
-  notification[type]({
-    message: title,
-    description,
-    onClick: () => {
-      callBack()
-    },
-  })
-}
+// export const pushNotification = (
+//   type,
+//   title,
+//   description,
+//   callBack = () => null,
+// ) => {
+//   notification[type]({
+//     message: title,
+//     description,
+//     onClick: () => {
+//       callBack()
+//     },
+//   })
+// }
