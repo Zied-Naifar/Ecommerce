@@ -12,8 +12,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import HomePage from 'pages/HomePage/Loadable';
 import NotFoundPage from 'pages/NotFoundPage/Loadable';
-
-import GlobalStyle from '../../global-styles';
+import 'antd/dist/antd.css';
 
 export default function App() {
   return (
@@ -22,7 +21,6 @@ export default function App() {
         <Route exact path="/" component={HomePage} />
         <Route component={NotFoundPage} />
       </Switch>
-      <GlobalStyle />
     </div>
   );
 }
