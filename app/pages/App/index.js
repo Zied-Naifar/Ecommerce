@@ -9,18 +9,33 @@
 
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+// import { isEmpty } from 'lodash';
 
-import HomePage from 'pages/HomePage/Loadable';
-import NotFoundPage from 'pages/NotFoundPage/Loadable';
+// import { Spin } from 'antd';
+import MainLayout from './Layout';
+// import ProductsTable from '../ProductsTable/ProductsTable';
 import 'antd/dist/antd.css';
 
 export default function App() {
-  return (
-    <div>
+  const renderLayout = () => {
+    console.log('renderLayout: ');
+    // if (isSignedIn && localStorage.getItem('token')) {
+    //   return (
+    //     <Switch>
+    //       <Route path="/" component={MainLayout} />
+    //     </Switch>
+    //   )
+    // }
+    return (
       <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route component={NotFoundPage} />
+        <Route path="/" component={MainLayout} />
       </Switch>
-    </div>
-  );
+    );
+  };
+
+  // if (!isEmpty(URLS)) {
+  // if (true) {
+  return <>{renderLayout()}</>;
+  // }
+  // return <Spin />; // loading endpoint
 }
