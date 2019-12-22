@@ -17,7 +17,7 @@ import 'antd/dist/antd.css';
 
 export default function App() {
   const renderLayout = () => {
-    console.log('renderLayout: ');
+    console.log('zzzz: ');
     // if (isSignedIn && localStorage.getItem('token')) {
     //   return (
     //     <Switch>
