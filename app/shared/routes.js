@@ -1,5 +1,5 @@
 /* eslint-disable import/no-cycle */
-import Dashboard from 'pages/HomePage/Loadable';
+import Dashboard from 'pages/ProductsTable/Loadable';
 
 export default {
   DASHBOARD: {
