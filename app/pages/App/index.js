@@ -7,7 +7,7 @@
  *
  */
 
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Switch, Route } from 'react-router-dom';
 // import { isEmpty } from 'lodash';
 
@@ -34,7 +34,7 @@ export default function App() {
 
   // if (!isEmpty(URLS)) {
   // if (true) {
-  return <>{renderLayout()}</>;
+  return <Fragment>{renderLayout()}</Fragment>;
   // }
   // return <Spin />; // loading endpoint
 }
