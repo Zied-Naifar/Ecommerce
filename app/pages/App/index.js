@@ -13,7 +13,6 @@ import { Switch, Route } from 'react-router-dom';
 
 // import { Spin } from 'antd';
 import MainLayout from './Layout';
-// import ProductsTable from '../ProductsTable/ProductsTable';
 import 'antd/dist/antd.css';
 
 export default function App() {
