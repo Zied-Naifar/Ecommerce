@@ -8,26 +8,35 @@
  */
 
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
+
 import { Switch, Route } from 'react-router-dom';
 // import { isEmpty } from 'lodash';
+import { createStructuredSelector } from 'reselect';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
 
 // import { Spin } from 'antd';
-import MainLayout from './Layout';
+import PrivateLayout from './PrivateLayout';
+import PublicLayout from './PublicLayout';
+
+import { makeSelectLocal } from '../../shared/redux/profile/selectors';
+
 import 'antd/dist/antd.css';
 
-export default function App() {
+const App = ({ local }) => {
   const renderLayout = () => {
-    console.log('zzzz: ');
-    // if (isSignedIn && localStorage.getItem('token')) {
-    //   return (
-    //     <Switch>
-    //       <Route path="/" component={MainLayout} />
-    //     </Switch>
-    //   )
-    // }
+    if (local.isSignedIn && localStorage.getItem('token')) {
+      console.log('object');
+      return (
+        <Switch>
+          <Route path="/" component={PrivateLayout} />
+        </Switch>
+      );
+    }
     return (
       <Switch>
-        <Route path="/" component={MainLayout} />
+        <Route path="/" component={PublicLayout} />
       </Switch>
     );
   };
@@ -37,4 +46,19 @@ export default function App() {
   return <Fragment>{renderLayout()}</Fragment>;
   // }
   // return <Spin />; // loading endpoint
-}
+};
+
+const mapStateToProps = createStructuredSelector({
+  local: makeSelectLocal(),
+});
+
+const withConnect = connect(
+  mapStateToProps,
+  null,
+);
+
+App.propTypes = {
+  local: PropTypes.object.isRequired,
+};
+
+export default compose(withConnect)(App);

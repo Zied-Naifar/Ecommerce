@@ -1,9 +1,14 @@
 /* eslint-disable import/no-cycle */
-import Dashboard from 'pages/ProductsTable/Loadable';
+import ProductsTable from 'pages/ProductsTable/Loadable';
+import LOGIN from 'pages/Login/Loadable';
 
 export default {
-  DASHBOARD: {
-    path: '/dashboard',
-    component: Dashboard,
+  ProductsTable: {
+    path: '/Products-table',
+    component: ProductsTable,
+  },
+  LOGIN: {
+    path: '/login',
+    component: LOGIN,
   },
 };
