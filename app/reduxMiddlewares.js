@@ -22,25 +22,14 @@ const extractRoot = type => {
 };
 
 const error400And424Handling = (store, next, action) => {
+  console.log('action: ', action);
   if (action.e && isFailure(action)) {
     if (action.e.response.status === 400) {
-      const arrayErrors = errorsExtraction(action.e.response.data.model);
+      const arrayErrors = errorsExtraction(action.e.response.data.error);
       /* Uncomment this line to re-enable notifications for bad request errors */
       // errors.forEach(error => pushNotification(NOTIFICATION_TYPES.error, error))
-      const objectErrors = action.e.response.data.model;
+      const objectErrors = action.e.response.data.error;
       next({ ...action, objectErrors, arrayErrors });
-      return;
-    }
-    if (action.e.response.status === 424) {
-      const objectErrors = {
-        other: [action.e.response.data.message],
-      };
-
-      next({
-        ...action,
-        objectErrors,
-        arrayErrors: [action.e.response.data.message],
-      });
       return;
     }
   }

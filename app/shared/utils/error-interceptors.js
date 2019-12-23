@@ -1,6 +1,6 @@
-import axios from 'axios'
-import { X_IDENTITY_URL } from 'shared/constants'
-import { setAccessTokenIfDefined } from './access-token'
+import axios from 'axios';
+import { X_IDENTITY_URL } from 'shared/constants';
+import { setAccessTokenIfDefined } from './access-token';
 const registerErrorInterceptors = () => {
   axios.interceptors.request.use(
     config =>
@@ -9,7 +9,7 @@ const registerErrorInterceptors = () => {
     error =>
       // Handle request error
       Promise.reject(error),
-  )
+  );
   axios.interceptors.response.use(
     response =>
       // Do something with the response data
@@ -22,20 +22,21 @@ const registerErrorInterceptors = () => {
             // window.location = `${X_IDENTITY_URL()}?redirectUrl=${
             //   window.location.href
             // }`
-            window.location = '/login'
-          break
+            // window.location = '/login'
+            console.log('object');
+          break;
         default:
-          break
+          break;
       }
-      return Promise.reject(error)
+      return Promise.reject(error);
     },
-  )
-}
+  );
+};
 
 export const errorsExtraction = errors =>
   Object.keys(errors).reduce(
     (acc, errorKey) => [...acc, ...errors[errorKey]],
     [],
-  )
+  );
 
-export default registerErrorInterceptors
+export default registerErrorInterceptors;

@@ -3,10 +3,15 @@
  * Profile actions
  *
  */
-import * as CONSTANTS from './constants';
+import constants from './constants';
+import {
+  generateActionWithBody,
+  // generateEmptyAction,
+  // generateActionWithBodyAndId,
+  // generateActionWithId,
+} from '../../utils/generic-saga';
 
-export function defaultAction() {
-  return {
-    type: CONSTANTS.DEFAULT_ACTION,
-  };
-}
+export default {
+  login: generateActionWithBody(constants.login.request),
+  logout: generateActionWithBody(constants.logout.request),
+};

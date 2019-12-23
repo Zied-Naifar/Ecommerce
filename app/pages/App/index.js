@@ -12,15 +12,15 @@ import PropTypes from 'prop-types';
 
 import { Switch, Route } from 'react-router-dom';
 // import { isEmpty } from 'lodash';
+
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
+import { makeSelectLocal } from '../../shared/redux/profile/selectors';
 
 // import { Spin } from 'antd';
 import PrivateLayout from './PrivateLayout';
 import PublicLayout from './PublicLayout';
-
-import { makeSelectLocal } from '../../shared/redux/profile/selectors';
 
 import 'antd/dist/antd.css';
 
@@ -48,6 +48,10 @@ const App = ({ local }) => {
   // return <Spin />; // loading endpoint
 };
 
+App.propTypes = {
+  local: PropTypes.object.isRequired,
+};
+
 const mapStateToProps = createStructuredSelector({
   local: makeSelectLocal(),
 });
@@ -56,9 +60,5 @@ const withConnect = connect(
   mapStateToProps,
   null,
 );
-
-App.propTypes = {
-  local: PropTypes.object.isRequired,
-};
 
 export default compose(withConnect)(App);
