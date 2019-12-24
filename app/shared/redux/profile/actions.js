@@ -14,4 +14,10 @@ import {
 export default {
   login: generateActionWithBody(constants.login.request),
   logout: generateActionWithBody(constants.logout.request),
+  clearLoginFormErrors: generateActionWithBody(
+    constants.clearLoginFormErrors.request,
+  ),
+  clearRegisterFormErrors: generateActionWithBody(
+    constants.clearRegisterFormErrors.request,
+  ),
 };

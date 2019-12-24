@@ -17,6 +17,25 @@ export function* logoutWatcher() {
   );
 }
 
+export function* clearLoginFormErrorsWatcher() {
+  yield takeEvery(
+    constants.clearLoginFormErrors.request,
+    generateSaga(sagaTypes.WITHOUT_API, constants.clearLoginFormErrors),
+  );
+}
+
+export function* clearRegisterFormErrorsWatcher() {
+  yield takeEvery(
+    constants.clearRegisterFormErrors.request,
+    generateSaga(sagaTypes.WITHOUT_API, constants.clearRegisterFormErrors),
+  );
+}
+
 export default function* storeSaga() {
-  yield all([LoginsWatcher(), logoutWatcher()]);
+  yield all([
+    LoginsWatcher(),
+    logoutWatcher(),
+    clearLoginFormErrorsWatcher(),
+    clearRegisterFormErrorsWatcher(),
+  ]);
 }

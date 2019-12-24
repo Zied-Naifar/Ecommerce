@@ -4,5 +4,5 @@ export const requestHeader = options => ({
     'Accept-Language': `en-US`,
     ...options,
   },
-})
-export const getToken = () => localStorage.getItem('token')
+});
+export const getToken = () => localStorage.getItem('token');

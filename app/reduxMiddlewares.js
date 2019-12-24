@@ -21,15 +21,15 @@ const extractRoot = type => {
   return `app/${splitType[1]}`;
 };
 
-const error400And424Handling = (store, next, action) => {
+const error400Handling = (store, next, action) => {
   console.log('action: ', action);
   if (action.e && isFailure(action)) {
     if (action.e.response.status === 400) {
-      const arrayErrors = errorsExtraction(action.e.response.data.error);
       /* Uncomment this line to re-enable notifications for bad request errors */
       // errors.forEach(error => pushNotification(NOTIFICATION_TYPES.error, error))
-      const objectErrors = action.e.response.data.error;
-      next({ ...action, objectErrors, arrayErrors });
+      const objectErrors = action.e.response.data.errors;
+      console.log('objectErrors: ', objectErrors);
+      next({ ...action, objectErrors });
       return;
     }
   }
@@ -108,7 +108,7 @@ const errorsHandling = store => next => action => {
     switch (action.e.response.status) {
       case 424:
       case 400:
-        error400And424Handling(store, next, action);
+        error400Handling(store, next, action);
         break;
       case 403:
         error403Handling(store, next, action);

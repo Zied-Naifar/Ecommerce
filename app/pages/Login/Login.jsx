@@ -12,13 +12,14 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { Form, Icon, Input, Button } from 'antd';
 // import messages from './messages';
-
+import { isEmpty } from 'lodash';
 import './login.scss';
 
 const Login = ({
   form: { getFieldDecorator, validateFields },
   login,
   local,
+  clearLoginFormErrors,
 }) => {
   const { loading, errors } = local;
   const handleSubmit = () => {
@@ -53,9 +54,7 @@ const Login = ({
               </span>,
             )}
           </Form.Item>
-          <Form.Item
-          // extra={errors.loginErrors}
-          >
+          <Form.Item extra={errors.loginErrors.other}>
             {getFieldDecorator('password', {
               rules: [
                 { required: true, message: 'Please input your Password!' },
@@ -68,6 +67,12 @@ const Login = ({
                   }
                   type="password"
                   placeholder="Password"
+                  className={`${!isEmpty(errors.loginErrors) &&
+                    `x-required-field`}`}
+                  onFocus={() => {
+                    // clearFormErrors('password');
+                    clearLoginFormErrors('other');
+                  }}
                 />
               </span>,
             )}

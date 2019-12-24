@@ -10,7 +10,7 @@ import constants from './constants';
 export const initialState = {
   local: {
     loading: { loginLoading: false, logoutLoading: false },
-    errors: { loginErrors: '', logoutErrors: [] },
+    errors: { loginErrors: {}, logoutErrors: [] },
     isSignedIn: hasToken(),
   },
 
@@ -30,7 +30,7 @@ const profileReducer = (state = initialState, action) =>
         draft.local.isSignedIn = true;
         break;
       case constants.login.failure:
-        draft.local.errors.loginErrors = action.e.response.data.error;
+        draft.local.errors.loginErrors = action.objectErrors;
         draft.local.loading.loginLoading = false;
         break;
 
@@ -46,8 +46,17 @@ const profileReducer = (state = initialState, action) =>
         draft.local.isSignedIn = false;
         break;
       case constants.logout.failure:
-        draft.local.errors.logoutErrors = action.arrayErrors;
+        draft.local.errors.logoutErrors = action.objectErrors;
         draft.local.loading.logoutLoading = false;
+        break;
+
+      case constants.clearLoginFormErrors.success:
+        draft.local.errors.loginErrors[action.data] = '';
+
+        break;
+
+      case constants.clearRegisterFormErrors.success:
+        draft.local.errors.userRegisterErrors[action.data] = '';
         break;
     }
   });

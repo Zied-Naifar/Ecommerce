@@ -23,6 +23,7 @@ import PrivateLayout from './PrivateLayout';
 import PublicLayout from './PublicLayout';
 
 import 'antd/dist/antd.css';
+import './global-style.scss';
 
 const App = ({ local }) => {
   const renderLayout = () => {
