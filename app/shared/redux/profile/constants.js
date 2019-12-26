@@ -14,4 +14,5 @@ export default {
     root,
     'CLEAR_REGISTER_FORM_ERRORS',
   ),
+  register: generateActionTypes(root, 'REGISTER'),
 };

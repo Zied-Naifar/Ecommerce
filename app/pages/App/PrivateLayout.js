@@ -30,7 +30,6 @@ import saga from '../../shared/redux/profile/saga';
 import ProductsTable from '../ProductsTable/ProductsTable';
 import routes from '../../shared/routes';
 const { Header, Content, Sider } = Layout;
-
 const MainLayout = ({ logout, local }) => {
   useInjectReducer({ key: 'profile', reducer });
 

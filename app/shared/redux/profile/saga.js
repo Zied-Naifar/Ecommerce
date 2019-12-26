@@ -31,11 +31,19 @@ export function* clearRegisterFormErrorsWatcher() {
   );
 }
 
+export function* registerWatcher() {
+  yield takeEvery(
+    constants.register.request,
+    generateSaga(sagaTypes.POST, constants.register, api.register),
+  );
+}
+
 export default function* storeSaga() {
   yield all([
     LoginsWatcher(),
     logoutWatcher(),
     clearLoginFormErrorsWatcher(),
     clearRegisterFormErrorsWatcher(),
+    registerWatcher(),
   ]);
 }

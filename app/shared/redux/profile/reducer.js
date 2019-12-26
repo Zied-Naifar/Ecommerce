@@ -9,8 +9,12 @@ import constants from './constants';
 
 export const initialState = {
   local: {
-    loading: { loginLoading: false, logoutLoading: false },
-    errors: { loginErrors: {}, logoutErrors: [] },
+    loading: {
+      loginLoading: false,
+      logoutLoading: false,
+      registerLoading: false,
+    },
+    errors: { loginErrors: {}, logoutErrors: [], registerErrors: {} },
     isSignedIn: hasToken(),
   },
 
@@ -32,6 +36,19 @@ const profileReducer = (state = initialState, action) =>
       case constants.login.failure:
         draft.local.errors.loginErrors = action.objectErrors;
         draft.local.loading.loginLoading = false;
+        break;
+
+      case constants.register.request:
+        draft.local.loading.registerLoading = true;
+        draft.local.errors.registerErrors = {};
+        break;
+      case constants.register.success:
+        draft.local.loading.registerLoading = false;
+        draft.local.isSignedIn = true;
+        break;
+      case constants.register.failure:
+        draft.local.errors.registerErrors = action.objectErrors;
+        draft.local.loading.registerLoading = false;
         break;
 
       case constants.logout.request:

@@ -50,6 +50,9 @@ const Login = ({
                     <Icon type="email" style={{ color: 'rgba(0,0,0,.25)' }} />
                   }
                   placeholder="email"
+                  onFocus={() => {
+                    clearLoginFormErrors('other');
+                  }}
                 />
               </span>,
             )}
@@ -61,7 +64,7 @@ const Login = ({
               ],
             })(
               <span>
-                <Input
+                <Input.Password
                   prefix={
                     <Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />
                   }
@@ -70,7 +73,6 @@ const Login = ({
                   className={`${!isEmpty(errors.loginErrors) &&
                     `x-required-field`}`}
                   onFocus={() => {
-                    // clearFormErrors('password');
                     clearLoginFormErrors('other');
                   }}
                 />

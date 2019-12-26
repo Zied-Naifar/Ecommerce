@@ -1,6 +1,7 @@
 /* eslint-disable import/no-cycle */
 import ProductsTable from 'pages/ProductsTable/Loadable';
 import LOGIN from 'pages/Login/Loadable';
+import REGISTER from 'pages/Register/Loadable';
 
 export default {
   ProductsTable: {
@@ -10,5 +11,9 @@ export default {
   LOGIN: {
     path: '/login',
     component: LOGIN,
+  },
+  REGISTER: {
+    path: '/register',
+    component: REGISTER,
   },
 };

@@ -20,4 +20,5 @@ export default {
   clearRegisterFormErrors: generateActionWithBody(
     constants.clearRegisterFormErrors.request,
   ),
+  register: generateActionWithBody(constants.register.request),
 };
