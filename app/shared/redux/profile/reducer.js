@@ -30,6 +30,8 @@ const profileReducer = (state = initialState, action) =>
         draft.local.errors.loginErrors = {};
         break;
       case constants.login.success:
+        console.log(action);
+        localStorage.setItem('token', action.data.token);
         draft.local.loading.loginLoading = false;
         draft.local.isSignedIn = true;
         break;
@@ -61,6 +63,7 @@ const profileReducer = (state = initialState, action) =>
         localStorage.removeItem('token');
         localStorage.removeItem('tracert-session-key');
         draft.local.isSignedIn = false;
+        window.location = '/';
         break;
       case constants.logout.failure:
         draft.local.errors.logoutErrors = action.objectErrors;

@@ -12,15 +12,16 @@ import PropTypes from 'prop-types';
 
 import { Switch, Route } from 'react-router-dom';
 // import { isEmpty } from 'lodash';
-
+import { ThemeProvider } from '@material-ui/styles';
+import { CssBaseline } from '@material-ui/core';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { makeSelectLocal } from '../../shared/redux/profile/selectors';
 
-// import { Spin } from 'antd';
 import PrivateLayout from './PrivateLayout';
 import PublicLayout from './PublicLayout';
+import Themes from './themes';
 
 import 'antd/dist/antd.css';
 import './global-style.scss';
@@ -44,7 +45,12 @@ const App = ({ local }) => {
 
   // if (!isEmpty(URLS)) {
   // if (true) {
-  return <Fragment>{renderLayout()}</Fragment>;
+  return (
+    <ThemeProvider theme={Themes.default}>
+      <CssBaseline />
+      {renderLayout()}
+    </ThemeProvider>
+  );
   // }
   // return <Spin />; // loading endpoint
 };

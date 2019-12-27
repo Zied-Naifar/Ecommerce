@@ -1,9 +1,9 @@
 // import produce from 'immer';
-import registerReducer from '../reducer';
+import globalReducer from '../reducer';
 // import { someAction } from '../actions';
 
 /* eslint-disable default-case, no-param-reassign */
-describe('registerReducer', () => {
+describe('globalReducer', () => {
   let state;
   beforeEach(() => {
     state = {
@@ -13,7 +13,7 @@ describe('registerReducer', () => {
 
   it('returns the initial state', () => {
     const expectedResult = state;
-    expect(registerReducer(undefined, {})).toEqual(expectedResult);
+    expect(globalReducer(undefined, {})).toEqual(expectedResult);
   });
 
   /**
