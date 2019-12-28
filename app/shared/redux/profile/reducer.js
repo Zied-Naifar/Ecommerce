@@ -17,7 +17,6 @@ export const initialState = {
     errors: { loginErrors: {}, logoutErrors: [], registerErrors: {} },
     isSignedIn: hasToken(),
   },
-
   data: {},
 };
 
@@ -30,7 +29,6 @@ const profileReducer = (state = initialState, action) =>
         draft.local.errors.loginErrors = {};
         break;
       case constants.login.success:
-        console.log(action);
         localStorage.setItem('token', action.data.token);
         draft.local.loading.loginLoading = false;
         draft.local.isSignedIn = true;
