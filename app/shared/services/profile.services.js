@@ -16,3 +16,18 @@ export const logout = async () => {
   );
   return result.data;
 };
+
+export const register = async body => {
+  const result = await axios.post(URL.baseApiUrl() + URL.auth.register, {
+    ...body,
+  });
+  return result.data;
+};
+
+export const getProfile = async () => {
+  const result = await axios.get(
+    URL.baseApiUrl() + URL.auth.getProfile,
+    requestHeader(),
+  );
+  return result.data;
+};

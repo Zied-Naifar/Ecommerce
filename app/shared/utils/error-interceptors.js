@@ -18,12 +18,12 @@ const registerErrorInterceptors = () => {
       // Handle response error
       switch (error.response.status) {
         case 401:
-          if (!setAccessTokenIfDefined())
-            // window.location = `${X_IDENTITY_URL()}?redirectUrl=${
-            //   window.location.href
-            // }`
-            // window.location = '/login'
-            console.log('object');
+          if (!setAccessTokenIfDefined()) {
+            localStorage.removeItem('expires');
+            localStorage.removeItem('token');
+            localStorage.removeItem('tracert-session-key');
+            window.location = '/';
+          }
           break;
         default:
           break;

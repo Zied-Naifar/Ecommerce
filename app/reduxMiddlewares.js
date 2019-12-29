@@ -22,13 +22,11 @@ const extractRoot = type => {
 };
 
 const error400Handling = (store, next, action) => {
-  console.log('action: ', action);
   if (action.e && isFailure(action)) {
     if (action.e.response.status === 400) {
       /* Uncomment this line to re-enable notifications for bad request errors */
       // errors.forEach(error => pushNotification(NOTIFICATION_TYPES.error, error))
       const objectErrors = action.e.response.data.errors;
-      console.log('objectErrors: ', objectErrors);
       next({ ...action, objectErrors });
       return;
     }

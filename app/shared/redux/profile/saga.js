@@ -38,12 +38,20 @@ export function* registerWatcher() {
   );
 }
 
-export default function* storeSaga() {
+export function* getProfileWatcher() {
+  yield takeEvery(
+    constants.getProfile.request,
+    generateSaga(sagaTypes.GET, constants.getProfile, api.getProfile),
+  );
+}
+
+export default function* profileSaga() {
   yield all([
     LoginsWatcher(),
     logoutWatcher(),
     clearLoginFormErrorsWatcher(),
     clearRegisterFormErrorsWatcher(),
     registerWatcher(),
+    getProfileWatcher(),
   ]);
 }

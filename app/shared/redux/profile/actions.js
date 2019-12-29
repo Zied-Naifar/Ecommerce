@@ -6,7 +6,7 @@
 import constants from './constants';
 import {
   generateActionWithBody,
-  // generateEmptyAction,
+  generateEmptyAction,
   // generateActionWithBodyAndId,
   // generateActionWithId,
 } from '../../utils/generic-saga';
@@ -21,4 +21,5 @@ export default {
     constants.clearRegisterFormErrors.request,
   ),
   register: generateActionWithBody(constants.register.request),
+  getProfile: generateEmptyAction(constants.getProfile.request),
 };

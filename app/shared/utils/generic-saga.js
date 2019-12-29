@@ -19,6 +19,7 @@ function* fetchOrDeleteTemplate(actionTypes, api, action) {
       data: result,
     });
   } catch (e) {
+    console.log('e: ', e);
     yield put({ type: actionTypes.failure, e });
   }
 }

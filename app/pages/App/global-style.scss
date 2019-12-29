@@ -1,4 +1,19 @@
 .ant-form-extra {
     color: #c7163c !important;
+}
 
+.ant-form-item-control.has-error {
+    .ant-form-explain {
+        color: #c7163c !important;
+        margin-top: 10px;
+    }
+
+
+}
+
+.ant-form-item-control.has-success {
+    .ant-form-extra {
+        color: #c7163c !important;
+        margin-top: 10px;
+    }
 }

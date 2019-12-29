@@ -15,4 +15,5 @@ export default {
     'CLEAR_REGISTER_FORM_ERRORS',
   ),
   register: generateActionTypes(root, 'REGISTER'),
+  getProfile: generateActionTypes(root, 'GET_PROFILE'),
 };

@@ -4,11 +4,11 @@
  *
  */
 
-import React, { memo, useState } from 'react';
+import React, { memo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
-import { Switch, Route, useHistory } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import { compose } from 'redux';
 import classnames from 'classnames';
 
@@ -19,7 +19,7 @@ import { createStructuredSelector } from 'reselect';
 import useStyles from './themes/styles';
 
 import {
-  // makeSelectData,
+  makeSelectData,
   makeSelectLocal,
 } from '../../shared/redux/profile/selectors';
 import reducer from '../../shared/redux/profile/reducer';
@@ -41,15 +41,26 @@ import routes from '../../shared/routes';
 import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/SideBar';
 
-const MainLayout = ({ logout, local, globalLocal, setIsSidebarOpened }) => {
+const MainLayout = ({
+  logout,
+  local,
+  globalLocal,
+  setIsSidebarOpened,
+  getProfile,
+  data,
+}) => {
   useInjectReducer({ key: 'profile', reducer });
   useInjectReducer({ key: 'global', reducer: globalReducer });
 
   const classes = useStyles();
 
-  // const { history } = useHistory();
+  useEffect(() => {
+    getProfile();
+  }, []);
+
   const { logoutLoading } = local;
   const { isSidebarOpened } = globalLocal;
+  const { userInfo } = data;
 
   return (
     <div className={classes.root}>
@@ -58,6 +69,7 @@ const MainLayout = ({ logout, local, globalLocal, setIsSidebarOpened }) => {
           isSidebarOpened={isSidebarOpened}
           setIsSidebarOpened={setIsSidebarOpened}
           logout={logout}
+          userInfo={userInfo}
         />
         <Sidebar
           isSidebarOpened={isSidebarOpened}
@@ -85,6 +97,7 @@ MainLayout.propTypes = {
 const mapStateToProps = createStructuredSelector({
   local: makeSelectLocal(),
   globalLocal: makeSelectGlobalLocal(),
+  data: makeSelectData(),
 });
 
 const mapDispatchToProps = {

@@ -25,7 +25,7 @@ import saga from '../../shared/redux/profile/saga';
 import Register from './Register';
 
 const RegisterIndex = props => {
-  useInjectReducer({ key: 'register', reducer });
+  useInjectReducer({ key: 'profile', reducer });
 
   return <Register {...props} />;
 };
@@ -39,7 +39,7 @@ const mapDispatchToProps = {
   ...actions,
 };
 
-const withSaga = injectSaga({ key: 'register', saga, mode: DAEMON });
+const withSaga = injectSaga({ key: 'profile', saga, mode: DAEMON });
 
 const withConnect = connect(
   mapStateToProps,

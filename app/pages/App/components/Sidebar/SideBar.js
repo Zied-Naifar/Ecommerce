@@ -6,9 +6,6 @@ import {
   FormatSize as TypographyIcon,
   FilterNone as UIElementsIcon,
   BorderAll as TableIcon,
-  QuestionAnswer as SupportIcon,
-  LibraryBooks as LibraryIcon,
-  HelpOutline as FAQIcon,
   ArrowBack as ArrowBackIcon,
 } from '@material-ui/icons';
 import { useTheme } from '@material-ui/styles';

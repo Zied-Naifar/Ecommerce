@@ -13,11 +13,18 @@ export const initialState = {
       loginLoading: false,
       logoutLoading: false,
       registerLoading: false,
+      getProfileLoading: false,
     },
-    errors: { loginErrors: {}, logoutErrors: [], registerErrors: {} },
+    errors: {
+      loginErrors: {},
+      logoutErrors: [],
+      registerErrors: {},
+    },
     isSignedIn: hasToken(),
   },
-  data: {},
+  data: {
+    userInfo: {},
+  },
 };
 
 /* eslint-disable default-case, no-param-reassign */
@@ -61,20 +68,32 @@ const profileReducer = (state = initialState, action) =>
         localStorage.removeItem('token');
         localStorage.removeItem('tracert-session-key');
         draft.local.isSignedIn = false;
-        window.location = '/';
         break;
       case constants.logout.failure:
-        draft.local.errors.logoutErrors = action.objectErrors;
+        draft.local.isSignedIn = false;
         draft.local.loading.logoutLoading = false;
+        break;
+
+      case constants.getProfile.request:
+        draft.local.loading.getProfileLoading = true;
+        draft.local.errors.getProfileErrors = [];
+        break;
+      case constants.getProfile.success:
+        draft.local.loading.getProfileLoading = false;
+        draft.data.userInfo = action.data.model;
+        break;
+      case constants.getProfile.failure:
+        draft.local.loading.getProfileLoading = false;
         break;
 
       case constants.clearLoginFormErrors.success:
         draft.local.errors.loginErrors[action.data] = '';
-
+        draft.local.errors.loginErrors.other = '';
         break;
 
       case constants.clearRegisterFormErrors.success:
-        draft.local.errors.userRegisterErrors[action.data] = '';
+        draft.local.errors.registerErrors[action.data] = '';
+        draft.local.errors.registerErrors.other = '';
         break;
     }
   });
